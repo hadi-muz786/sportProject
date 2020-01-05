@@ -1,5 +1,5 @@
-package com.abc.repositories;
- 
+  package com.abc.repositories;
+
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -15,7 +15,7 @@ import com.abc.entities.TeamEntity;
 @Transactional
 public class TeamRepository {
 
-	private EntityManager em;
+ 	private EntityManager em;
 
 	public TeamEntity save(TeamEntity team) {
 		return em.merge(team);
@@ -24,6 +24,10 @@ public class TeamRepository {
 	public List<TeamEntity> getAll() {
 		Query q = em.createQuery("from TeamEntity");
 		return q.getResultList();
+	}
+
+	public TeamEntity getById(Long id) {
+		return em.find(TeamEntity.class, id);
 	}
 
 	public TeamEntity getTeamByName(String teamName) {
@@ -35,7 +39,7 @@ public class TeamRepository {
 	public EntityManager getEm() {
 		return em;
 	}
-
+ 
 	@PersistenceContext
 	public void setEm(EntityManager em) {
 		this.em = em;

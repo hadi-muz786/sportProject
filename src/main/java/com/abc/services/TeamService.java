@@ -20,7 +20,7 @@ public class TeamService {
 		TeamEntity team = new TeamEntity();
 		team.setName(dto.getName());
 		team.setCountry(dto.getCountry());
-		team.setMngr(dto.getMngr());
+		team.setMngr(dto.getMngr());  
 		team.setLogo(dto.getLogo());
 		team.setCreated(new Date());
 		team.setUpdated(new Date());
@@ -28,34 +28,31 @@ public class TeamService {
 		return convert(teamRepository.save(team));
 
 	}
-	
+
 	public List<TeamDto> getAllTeam() {
 		List<TeamEntity> teams = teamRepository.getAll();
-		
+
 		List<TeamDto> returnList = new ArrayList<TeamDto>();
-		
-		for(TeamEntity t : teams) {
-			
+
+	 	for (TeamEntity t : teams) {
+
 			TeamDto d = convert(t);
 			returnList.add(d);
 		}
 		return returnList;
 	}
-	
-	
-	
 
 	private TeamDto convert(TeamEntity te) {
 		TeamDto dto = null;
-
+ 
 		if (te != null) {
 
 			dto = new TeamDto();
-			dto.setId(te.getId());
+			dto.setId(te.getId()); 
 			dto.setName(te.getName());
 			dto.setCountry(te.getCountry());
 			dto.setMngr(te.getMngr());
-			dto.setLogo(te.getLogo());
+			dto.setLogo(te.getLogo()); 
 		}
 		return dto;
 	}

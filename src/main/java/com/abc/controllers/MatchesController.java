@@ -4,24 +4,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.abc.dtos.PlayerDto;
-import com.abc.services.PlayerService;
+import com.abc.dtos.MatchesDto;
+import com.abc.services.MatchesService;
 
 @RestController
-@RequestMapping("/player")
-class PlayerController {
-
+@RequestMapping("/match")
+public class MatchesController {
 	@Autowired
-	private PlayerService playerService;
+	MatchesService match;
 
 	@RequestMapping(value = "", method = RequestMethod.POST)
-	public void addplayer(@RequestParam(value = "teamId") Long teamId, @RequestBody PlayerDto playerDto)
-			throws Exception {
-
-		playerService.createPlayer(teamId, playerDto);
+	public void createMatch(@RequestBody MatchesDto dto) {
+		System.out.println(dto.toString());
+		match.createtMatch(dto);
 
 	}
-} 
+
+}

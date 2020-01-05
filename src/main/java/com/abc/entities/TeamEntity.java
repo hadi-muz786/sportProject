@@ -1,4 +1,4 @@
-package com.abc.entities;
+ package com.abc.entities;
 
 import java.util.Date;
 
